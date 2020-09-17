@@ -5,19 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon bot.js"
+    "start": "node bot.js",
+    "devStart": "nodemon bot.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
+    "discord-ytdl-core": "^4.0.8",
     "discord.js": "^12.3.1",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.7",
     "fluent-ffmpeg": "^2.1.2",
-    "youtube-api-v3-search": "^1.2.1",
-    "ytdl-core": "^3.2.2",
-    "ytdl-core-discord": "^1.2.1"
+    "jshint": "^2.12.0",
+    "knex": "^0.21.5",
+    "pg": "^8.3.3",
+    "prism-media": "^1.2.2",
+    "youtube-api-v3-search": "^1.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
