@@ -13,8 +13,9 @@ const knex = require('knex')({
 
 
 const getYoutubeVideoInfo = async (query) => {
+  let data = null;
   try {
-    const data = await knex('songdata').select('query','title','videourl').where('query', '=', query);
+    data = await knex('songdata').select('query','title','videourl').where('query', '=', query);
     console.log(data);
   } catch (error) {
     console.error(error);
