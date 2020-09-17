@@ -6,7 +6,7 @@ const knex = require('knex')({
   connection: {
     host : '127.0.0.1',
     user : 'postgres',
-    password : process.env.DB_PASS,
+    password : process.env.DB_PASS ? process.env.DB_PASS : '',
     database : 'ytmusic'
   }
 });
