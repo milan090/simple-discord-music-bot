@@ -5,12 +5,11 @@ const knex = require('knex')({
   version: '12',
   connection: {
     host : '127.0.0.1',
-    user : 'postgres',
-    password : process.env.DB_PASS ? process.env.DB_PASS : '',
-    database : 'ytmusic'
+    user : process.env.DB_USER || 'postgres',
+    password : process.env.DB_PASS || '',
+    database : process.env.DB_NAME || 'ytmusic'
   }
 });
-
 
 const getYoutubeVideoInfo = async (query) => {
   let data = null;
