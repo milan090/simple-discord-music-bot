@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const { YOUTUBE_API_KEY,  } = require('../config.json');
+
 const knex = require('knex')({
   client: 'pg',
   version: '12',
@@ -11,36 +12,50 @@ const knex = require('knex')({
   }
 });
 
+knex.connection = false;
+// Checking Connection with DB
+// knex doesn't have any other way to do that :(
+knex('songdata').select("*").limit(1).then(data => {
+  knex.connection = true;
+  console.log(knex.connection ? "DB Connected!" : "DB NOT Connected");
+});
+
+
 const getYoutubeVideoInfo = async (query) => {
   let data = null;
-  try {
-    data = await knex('songdata').select('query','title','videourl').where('query', '=', query);
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-  if (data.length == 0) {    
+  if (knex.connection) {
     try {
-      console.log("Using google API");
-      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`)
+      data = await knex('songdata').select('title','videourl').where('query', '=', query);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  if (data === null || !data.length) {    
+    try {
+      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
       const data = await response.json();
-      console.log(data);
   
       if (!data.items) return null;
       const videoUrl = `https://www.youtube.com/watch?v=${data.items[0].id.videoId}`;
       const title = data.items[0].snippet.title;
       const songInfo = { title, videoUrl };
-      await knex('songdata').insert({
-        query: query,
-        title: title,
-        videourl: videoUrl
-      })
+      if (knex.connection) {
+        try {
+          await knex('songdata').insert({
+            query: query,
+            title: title,
+            videourl: videoUrl
+          })
+        } catch (error) {
+          console.log(error);
+        }
+      }
       return songInfo;
     } catch (error) {
       console.log(error);
+      return null;
     }
   } else {
-    console.log("Using database");
     const { title, videourl } = data[0];
     return {
       title,

@@ -1,7 +1,7 @@
 const playSongs = require('./playSongs');
 
 async function play(message, songConstruct) {
-  const songInfo = songConstruct.songs[0];
+  const songInfo = songConstruct.songs[songConstruct.songs.length - 1];
   if (!songConstruct.playing) {
     try {
       // Tries to join a voice channel
