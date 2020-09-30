@@ -5,6 +5,7 @@ const {
 } = require('./config.json');
 const { getYoutubeVideoInfo } = require('./api/youtube');
 
+// Commands
 const { play } = require('./commands/play');
 const { skip } = require('./commands/skip');
 const { stop } = require('./commands/stop');
