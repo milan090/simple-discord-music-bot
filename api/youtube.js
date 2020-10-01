@@ -1,4 +1,4 @@
-const yts = require( 'yt-search' )
+const yts = require('yt-search')
 
 const getYoutubeVideoInfo = async (query) => {
   try {
@@ -9,7 +9,7 @@ const getYoutubeVideoInfo = async (query) => {
       title: video.title
     }
   } catch (error) {
-    console.log(err);
+    console.log(error);
     return null;
   }
 }
