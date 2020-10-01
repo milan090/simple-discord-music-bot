@@ -28,7 +28,7 @@ If you want to invite your bot you must create an invite URL for it.
 3. Click on your bot's page.
 4. Go to the "OAuth2" tab.
 5. Tick the “bot” checkbox under “scopes”.
-6. Tick the permissions required for your bot to function under “Bot Permissions”.
+6. Tick the permissions required for your bot to function under “Bot Permissions”. In this case `Connect`, `Speak`, `Send Messages`, `View Channels` and `Add Reactions`.
     * Please be aware of the consequences of requiring your bot to have the “Administrator” permission.
     * Bot owners must have 2FA enabled for certain actions and permissions when added in servers that have Server-Wide 2FA enabled. Check the [2FA support page](https://support.discord.com/hc/en-us/articles/219576828-Setting-up-Two-Factor-Authentication) for more information.
 7. Now the resulting URL can be used to add your bot to a server. Copy and paste the URL into your browser, choose a server to invite the bot to, and click “Authorize”.
