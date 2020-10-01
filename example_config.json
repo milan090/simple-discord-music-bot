@@ -1,5 +1,5 @@
 {
   "prefix": "^",
   "token": "DISCORD_TOKEN",
-  "api_key": "MUSIC_DATA_API_KEY"
-}
+  "api_key": "MUSIC_API_KEY"
+  }
