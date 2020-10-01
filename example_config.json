@@ -1,5 +1,4 @@
 {
   "prefix": "^",
-  "token": "DISCORD_TOKEN",
-  "YOUTUBE_API_KEY": "KEY"
+  "token": "DISCORD_TOKEN"
   }
