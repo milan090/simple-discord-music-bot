@@ -9,7 +9,7 @@
 6. `npm start` or `npm dev:start`(run with nodemon) to run the bot.
 
 ### Testing the bot
-1. Invite the bot into a guild/server ([Join our server for testing and feedback](https://discord.gg/yBB2bF))
+1. [Invite](CREATE_BOT.md) the bot into a guild/server ([Join our server for testing and feedback](https://discord.gg/yBB2bF))
 2. Run the bot with `npm dev:start`.
 
 ## Available Commands
