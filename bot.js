@@ -10,6 +10,7 @@ const { remove } = require("./commands/remove.js");
 const { seek } = require("./commands/seek.js");
 const { changeOrder } = require("./commands/changeOrder.js");
 const { queue } = require("./commands/queue");
+const { suggest } = require("./commands/suggest");
 
 const client = new Discord.Client();
 const songConstructs = {}; // Handles the song queues for all guilds
@@ -97,6 +98,10 @@ client.on("message", async (message) => {
         message.channel.send("Song Queue changed! \n");
         queue(message, songConstruct);
       }
+      break;
+
+    case "suggest":
+      await suggest(message)
       break;
 
     case "help":
