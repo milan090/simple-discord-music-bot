@@ -22,3 +22,4 @@
 - `^stop`
 - `^seek 2:31`
 - `^change <SONG_INDEX>:<NEW_INDEX>`
+- `^suggest`
