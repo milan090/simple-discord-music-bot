@@ -108,7 +108,7 @@ client.on("message", async (message) => {
       const embed = new Discord.MessageEmbed()
         .setTitle("Help for TheByteSlash Music BOT")
         .setColor(0x00ff00).setDescription(`
-          \`\`\`${prefix}play <song name> : Use this to play any song.\n${prefix}skip : Skips the currently playing song.\n${prefix}stop : Deletes the song queue and disconnects the bot.\n${prefix}queue : Displays the list of songs to be played.\n${prefix}remove N: Will remove a song in the queue at position N\n${prefix}seek mm:ss : Skips the song track to mm:ss time
+          \`\`\`${prefix}play <song name> : Use this to play any song.\n${prefix}skip : Skips the currently playing song.\n${prefix}stop : Deletes the song queue and disconnects the bot.\n${prefix}queue : Displays the list of songs to be played.\n${prefix}remove N: Will remove a song in the queue at position N\n${prefix}seek mm:ss : Skips the song track to mm:ss time\n${prefix}chaneg <SONG_INDEX> <CHANGE_TO_INDEX>: changes the song order\n${prefix}suggest : Gives a random song
           \`\`\`
         `);
       message.channel.send(embed);
