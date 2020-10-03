@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const { prefix, token } = require("../config.json");
 const { getYoutubeVideoInfo } = require("./api/youtube");
 
+
 // Commands
 const { play } = require("./commands/play");
 const { skip } = require("./commands/skip");
@@ -49,7 +50,7 @@ client.on("message", async (message) => {
   switch (command) {
   case "play": {
     const songName = argString;
-    const songInfo = await getYoutubeVideoInfo(songName.toLowerCase());
+    const songInfo = await getYoutubeVideoInfo(songName);
     if (!songInfo) return message.channel.send("No such song.");
     songConstruct.songs.push(songInfo);
     await play(message, songConstruct);
