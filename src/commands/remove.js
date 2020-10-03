@@ -1,4 +1,4 @@
-const { prefix } = require('../config.json');
+const { prefix } = require("../../config.json");
 
 async function remove(message, songConstruct, index) {
   if (!index) return message.channel.send("Please specify the index of the song to remove from queue");
@@ -12,4 +12,4 @@ async function remove(message, songConstruct, index) {
 
 module.exports = {
   remove
-}
+};

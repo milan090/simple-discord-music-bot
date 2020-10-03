@@ -7,6 +7,7 @@
 3. [Create a bot on discord developer portal](CREATE_BOT.md) and get the TOKEN.
 4. Create a new `config.json` file in root directory (refer example_config.json).
 5. Paste the discord TOKEN for the bot in the newly created `config.json`.
+6. Get the api_key(for music suggestion) from  https://developer.musixmatch.com/
 6. `npm start` or `npm dev:start`(run with nodemon) to run the bot.
 
 ### Testing the bot

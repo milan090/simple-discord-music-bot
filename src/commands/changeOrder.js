@@ -1,6 +1,4 @@
-const ytdl = require("discord-ytdl-core");
-
-indexIsValid = (index, songsLength) => {
+const indexIsValid = (index, songsLength) => {
   return index > 1 && index <= songsLength;
 };
 

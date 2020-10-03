@@ -1,4 +1,4 @@
-const playSongs = require('./playSongs');
+const playSongs = require("./playSongs");
 
 async function play(message, songConstruct) {
   const songInfo = songConstruct.songs[songConstruct.songs.length - 1];
@@ -7,9 +7,9 @@ async function play(message, songConstruct) {
       // Tries to join a voice channel
       songConstruct.connection = await message.member.voice.channel.join();
       playSongs(message, songConstruct);
-    } catch (error) {
+    } catch (err) {
       songConstruct.songs = [];
-      console.log(error);
+      console.log(err);
       return message.reply("Sorry, I am not able to join that voice channel. Contact your Server's Admin!");
     }
   } else {
@@ -19,4 +19,4 @@ async function play(message, songConstruct) {
 
 module.exports = {
   play
-}
+};

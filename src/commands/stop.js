@@ -1,5 +1,4 @@
-const { prefix } = require('../config.json');
-const { songConstructs } = require('../bot');
+const { prefix } = require("../../config.json");
 
 async function stop(message, songConstruct){
   songConstruct.songs = [];

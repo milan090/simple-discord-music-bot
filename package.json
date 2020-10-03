@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node bot.js",
-    "dev:start": "nodemon bot.js"
+    "start": "node ./src/bot.js",
+    "dev:start": "nodemon bot.js",
+    "lint": "eslint ./src --fix"
   },
   "author": "milan090",
   "license": "ISC",
