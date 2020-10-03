@@ -13,7 +13,7 @@ const { queue } = require("./commands/queue");
 const { suggest } = require("./commands/suggest");
 
 const client = new Discord.Client();
-const songConstructs = {}; // Handles the song queues for all guilds
+const songConstructs = new Map(); // Handles the song queues for all guilds
 
 client.once("ready", () => {
   console.log("Ready");
@@ -25,10 +25,12 @@ client.on("message", async (message) => {
     return message.reply("You need to be connected to a voice channel first!");
   // The user should be connected to a voice channel
 
-  const args = message.content.slice(prefix.length).split(" ");
+  const args = message.content.slice(prefix.length).trim().split(/\s+/);
   const command = args.shift(); //Removes the first item (command) from the args:<Array>
+  const argString = message.content.slice(prefix.length).trim().slice(command.length).trim();
+  if(argString == '') argString = null;
 
-  let songConstruct = songConstructs[message.guild.id];
+  let songConstruct = songConstructs.get(message.guild.id);
 
   if (!songConstruct) {
     //If a songconstruct for the guild does not exist, create it!
@@ -38,13 +40,15 @@ client.on("message", async (message) => {
       songs: [],
       playing: false,
     };
-    songConstructs[message.guild.id] = songConstruct = newSongConstruct;
+
+    songConstructs.set(message.guild.id, newSongConstruct);
     //Sets the songConstruct for the guild
+    songConstruct = newSongConstruct;
   }
 
   switch (command) {
     case "play":
-      const songName = args.join(" ");
+      const songName = argString;
       const songInfo = await getYoutubeVideoInfo(songName.toLowerCase());
       if (!songInfo) return message.channel.send("No such song.");
       songConstruct.songs.push(songInfo);
@@ -94,7 +98,7 @@ client.on("message", async (message) => {
       );
       if (Array.isArray(newSongs)) {
         songConstruct = { ...songConstruct, songs: newSongs };
-        songConstructs[message.guild.id] = songConstruct;
+        songConstructs.set(message.guild.id, songConstruct);
         message.channel.send("Song Queue changed! \n");
         queue(message, songConstruct);
       }
