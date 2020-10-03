@@ -40,8 +40,10 @@ client.on("message", async (message) => {
       songs: [],
       playing: false,
     };
+
     songConstructs.set(message.guild.id, newSongConstruct);
     //Sets the songConstruct for the guild
+    songConstruct = newSongConstruct;
   }
 
   switch (command) {
