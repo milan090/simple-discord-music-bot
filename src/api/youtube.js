@@ -1,8 +1,17 @@
 const yts = require("yt-search");
+const { validURL } = require('../helpers/urlChecker');
+const { getYoutubeId } = require('../helpers/getYoutubeId');
 
-const getYoutubeVideoInfo = async (query) => {
+const getYoutubeVideoInfo = async (songName) => {
   try {
-    const res = await yts(query);
+
+    if (validURL(songName)){
+      songName = getYoutubeId(songName);
+    }else{
+      songName = songName.toLowerCase();
+    }
+
+    const res = await yts(songName);
     const video = res.videos[0];
     return {
       videoUrl: video.url,
